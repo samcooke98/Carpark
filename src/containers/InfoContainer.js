@@ -4,6 +4,8 @@ import { selectRiser } from "../redux/actions"
 import { getAirflowDets } from "../redux/selectors"
 import { Tabs, Tab } from "../components/Tabs"
 
+import RiserDataContainer from "../containers/RiserDataContainer"
+
 import ReactTable from "react-table";
 import "react-table/react-table.css";
 
@@ -14,32 +16,55 @@ const InfoPane = (props) => !console.log(props) && (
 			<Tab title="General">
 				<ReactTable
 					defaultPageSize={1}
-						
+
 					data={[props.airflow]}
-					columns={[{
-						Header: "Qa",
-						accessor: 'qa',
-					},
-					{
-						Header: "Qb",
-						accessor: 'qb',
-					},
-					{ 
-						Header: "Qc",
-						accessor: 'qc'
-					}
+					columns={[
+						{
+							Header: "C",
+							accessor: "C"
+						},
+						{
+							Header: "Qa",
+							accessor: 'qa',
+						},
+						{
+							Header: "Qb",
+							accessor: 'qb',
+						},
+						{
+							Header: "Qc",
+							accessor: 'qc'
+						}, {
+							Header: "Exhaust Air flow (l/s)",
+							accessor: 'exhaustAirFlow'
+						}, {
+							Header: "Exhaust Air Flow (w/Safety)\n(l/s)",
+							accessor: "exhaustWithSafety"
+						}, {
+							Header: "Minimum Make-up Air Flow(l/s)",
+							accessor: "minMakeupFlow"
+						}, {
+							Header: "Maximum Make-up Air Flow (l/s)",
+							accessor: "maxMakeupFlow"
+						}, {
+							Header: "Check Figures (l/s/m2)",
+							accessor: "checkOne"
+						}, {
+							Header: "Check Figures (l/s/vehicle)",
+							accessor: "checkTwo",
+						}
 					]}
 				/>
 				<p> There are {Object.keys(props.risers).length} risers.</p>
 				<p> There are {props.nCarparks} carpark spaces </p>
-				<p> The Required airflow is: {JSON.stringify(props.airflow)}</p>
 			</Tab>
-			<Tab title="Output">
-				<p> Output </p>
+			<Tab title="Selected Riser">
+				<RiserDataContainer /> 
 			</Tab>
 			<Tab title="Settings">
-				<p> TODO: </p>
-
+				<p> Settings for the entire floor</p>
+				<p> Vehicle Type Factor </p>
+				
 			</Tab>
 		</Tabs>
 	</div>

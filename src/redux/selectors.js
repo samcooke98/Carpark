@@ -27,4 +27,10 @@ const getVehicleFactor = state => state.constants.t
 
 export const getAirflowDets = createSelector([
 	getN1, getN2, getD1, getD2, getStaffExposure, getStaffFactor, getParkingUsage, getVehicleFactor, getArea
-], calcAirflowDetail) 
+], calcAirflowDetail)
+
+export const getAreaTwo = createSelector([getArea], (area) => area)
+
+const _getSelectedRiser = state => state.selectedRiser;
+const getRisers = state => state.risers
+export const getSelectedRiser = createSelector([_getSelectedRiser, getRisers], (id, risers) => risers[id] || {})

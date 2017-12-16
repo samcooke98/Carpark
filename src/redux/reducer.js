@@ -14,10 +14,13 @@ const initialState = {
 		'abc': {
 			id: 'abc',
 			pos: [250, 50],
+			// areaServed: (1000 * 100 )
 		},
 		'def': {
 			id: 'def',
 			pos: [750, 50],
+			bias: 0.75,
+			// areaServed: 
 		}
 	},
 	selectedRiser: null,
@@ -38,7 +41,7 @@ const initialState = {
 	//TODO: how to represent? 
 };
 
-type ReduxState = { 
+export type ReduxState = { 
 	path: Array<Array<number,number>>,
 	risers: { 
 		[id: string]: { 
@@ -52,6 +55,14 @@ type ReduxState = {
 
 
 export default handleActions({ 
-	[actionTypes.SELECT_RISER]: (state, {payload: riserId}) => ({...state, selectedRiser: riserId})
+	[actionTypes.SELECT_RISER]: (state, {payload: riserId}) => ({...state, selectedRiser: riserId}),
+
+	[actionTypes.UPDATE_RISER]: (state, {payload: newObj}) => ({...state, risers: { 
+		...state.risers,
+		[state.selectedRiser]: { 
+			...state.risers[state.selectedRiser],
+			...newObj
+		}
+	}})
 	
 }, initialState);

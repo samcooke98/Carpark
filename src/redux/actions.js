@@ -11,3 +11,8 @@ export const selectRiser = (riserIndex: number) => ({
 	type: actionTypes.SELECT_RISER,
 	payload: riserIndex,
 })
+
+export const updateRiser = (riserObj: {}) => ({ 
+	type: actionTypes.UPDATE_RISER,
+	payload: riserObj
+})

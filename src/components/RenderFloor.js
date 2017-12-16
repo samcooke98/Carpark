@@ -10,10 +10,11 @@ const RenderFloor = (props) => {
 			<Path
 				data={props.path}
 				fill={CONST_FILL}
+				// stroke={CONST_FILL}
 			/>
 		</Layer>
 	)
 }
 export default RenderFloor;
 
-const CONST_FILL = 'red'
+const CONST_FILL = 'lightgrey'

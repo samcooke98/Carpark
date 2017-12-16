@@ -14,7 +14,9 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
 })
 
 const RiserContainer = connect(mapStateToProps, mapDispatchToProps)((props) => (
-	props.input.map((obj, i) => <Riser posX={obj.pos[0]} posY={obj.pos[1]} key={i} selected={obj.id == props.selectedId} onClick={() => props.select(obj.id)} />)
+	props.input.map((obj, i) => (
+		<Riser posX={obj.pos[0]} posY={obj.pos[1]} key={i} selected={obj.id == props.selectedId} onClick={() => props.select(obj.id)} />)
+	)
 ))
 
 export default RiserContainer
